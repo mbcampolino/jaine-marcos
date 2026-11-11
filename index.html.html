@@ -1,0 +1,408 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Convite de Casamento - Marcos & Jaine</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Great+Vibes&family=Montserrat:wght@300;400;500;600&display=swap');
+
+        body {
+            margin: 0;
+            padding: 0;
+            background-color: #f7f7f7;
+            background-image: radial-gradient(#ebebeb 1px, transparent 1px);
+            background-size: 20px 20px;
+            font-family: 'Montserrat', sans-serif;
+            color: #4a4a4a;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 40px 0;
+        }
+        .invitation-card {
+            background: #ffffff;
+            max-width: 550px;
+            width: 90%;
+            padding: 90px 40px; 
+            text-align: center;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            border: 1px solid #f0f0f0;
+            border-radius: 12px;
+            margin: 20px;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .floral {
+            position: absolute;
+            z-index: 0;
+            width: 162px;
+            height: 162px;
+            pointer-events: none;
+        }
+        .floral.top-right {
+            top: -15px;
+            right: -15px;
+        }
+        .floral.bottom-left {
+            bottom: -15px;
+            left: -15px;
+            transform: rotate(180deg);
+        }
+
+        /* EASTER EGGS STYLES */
+        .butterfly-container {
+            position: absolute;
+            top: 220px;
+            right: 15%;
+            width: 45px;
+            height: 45px;
+            z-index: 3;
+            pointer-events: none;
+            animation: float 4s ease-in-out infinite;
+        }
+        
+        /* ANIMATIONS */
+        @keyframes float {
+            0% { transform: translateY(0px) rotate(15deg); }
+            50% { transform: translateY(-10px) rotate(10deg); }
+            100% { transform: translateY(0px) rotate(15deg); }
+        }
+        
+        @keyframes heartbeat {
+            0%, 100% { transform: scale(1); }
+            10% { transform: scale(1.3); }
+            20% { transform: scale(1); }
+            30% { transform: scale(1.3); }
+            40% { transform: scale(1); }
+        }
+            50% { transform: translate(-15px, -15px); } 
+        }
+
+        .bloom {
+            opacity: 0;
+            transform: scale(0);
+            transform-origin: 0 0;
+            animation: bloom-anim 1.5s cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+        }
+
+        @keyframes bloom-anim {
+            0% { opacity: 0; transform: scale(0) rotate(-20deg); }
+            100% { opacity: 1; transform: scale(1) rotate(0deg); }
+        }
+
+        .heart-icon {
+            transform-origin: center;
+            animation: heartbeat 2.5s ease-in-out infinite;
+        }
+        
+        .gift-icon {
+            transform-origin: center;
+        }
+
+        .content {
+            position: relative;
+            z-index: 2;
+        }
+
+        .cursive-highlight {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.8em; 
+            color: #777; 
+            margin-bottom: 5px;
+            line-height: 1;
+        }
+        .header-text {
+            font-size: 0.85em;
+            text-transform: uppercase;
+            letter-spacing: 4px;
+            margin-bottom: 25px;
+            color: #999;
+            line-height: 1.5;
+        }
+        .names {
+            font-family: 'Great Vibes', cursive;
+            font-size: 4.8em;
+            color: #c4a977; 
+            margin: 15px 0;
+            line-height: 1.1;
+            position: relative;
+        }
+        .divider-wrapper {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 35px auto;
+            gap: 15px;
+        }
+        .divider-line {
+            width: 50px;
+            height: 1px;
+            background-color: #c4a977;
+            opacity: 0.6;
+        }
+        .divider-icon {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 15px; 
+        }
+        .date-time {
+            font-size: 1.2em;
+            font-weight: 400;
+            color: #333;
+            line-height: 1.5;
+            margin-bottom: 40px;
+        }
+        .section-title {
+            font-weight: 600;
+            font-size: 1.05em;
+            margin-bottom: 8px;
+            color: #333;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+        }
+        .details {
+            font-size: 0.9em;
+            line-height: 1.6;
+            margin-bottom: 40px;
+            font-weight: 300;
+            color: #555;
+        }
+        .map-link {
+            color: #555;
+            text-decoration: none;
+            border-bottom: 1px dashed #c4a977;
+            transition: color 0.3s ease;
+            padding-bottom: 2px;
+        }
+        .map-link:hover {
+            color: #c4a977;
+        }
+        .footer-text {
+            font-family: 'Great Vibes', cursive;
+            font-size: 2.6em; 
+            color: #777; 
+            margin-top: 40px;
+            line-height: 1.2;
+        }
+        
+        /* BOTÃO PIX ESTILOS */
+        .pix-btn {
+            background-color: transparent;
+            border: 1px solid #c4a977;
+            color: #c4a977;
+            padding: 12px 25px;
+            font-size: 0.85em;
+            font-weight: 500;
+            font-family: 'Montserrat', sans-serif;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            border-radius: 25px;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            margin-bottom: 10px;
+            width: 100%;
+            max-width: 380px;
+        }
+        .pix-btn:hover {
+            background-color: #c4a977;
+            color: #fff;
+        }
+        .pix-btn.copied {
+            background-color: #f7f7f7;
+            border-color: #e5e5e5;
+            color: #555;
+            cursor: default;
+            text-transform: none;
+            letter-spacing: 1px;
+            font-size: 0.8em;
+            font-weight: 400;
+        }
+
+        @media (max-width: 600px) {
+            .names {
+                font-size: 4.2em;
+            }
+            .cursive-highlight {
+                font-size: 2.4em;
+            }
+            .footer-text {
+                font-size: 2.2em;
+            }
+            .invitation-card {
+                padding: 75px 20px; 
+            }
+            .floral {
+                width: 124px; 
+                height: 124px;
+            }
+            .butterfly-container {
+                top: 200px;
+                right: 5%;
+                width: 35px;
+                height: 35px;
+            }
+            .pix-btn {
+                font-size: 0.75em;
+                padding: 12px 15px;
+            }
+        }
+
+    </style>
+</head>
+<body>
+    <div class="invitation-card">
+        
+        <!-- FLORES -->
+        <svg class="floral top-right" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+            
+    <defs>
+        <radialGradient id="bl1" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#020617"/><stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="bl2" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="bl3" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9"/></radialGradient>
+        <radialGradient id="bl4" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#93c5fd" stop-opacity="0.85"/></radialGradient>
+        
+        <radialGradient id="mv1" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#2e052c"/><stop offset="100%" stop-color="#4a044e" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="mv2" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#4a044e"/><stop offset="100%" stop-color="#701a75" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="mv3" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#701a75"/><stop offset="100%" stop-color="#9d174d" stop-opacity="0.9"/></radialGradient>
+        <radialGradient id="mv4" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#9d174d"/><stop offset="100%" stop-color="#db2777" stop-opacity="0.85"/></radialGradient>
+        <radialGradient id="mv5" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#db2777"/><stop offset="100%" stop-color="#fbcfe8" stop-opacity="0.85"/></radialGradient>
+
+        <radialGradient id="pk1" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#831843"/><stop offset="100%" stop-color="#be185d" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="pk2" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#be185d"/><stop offset="100%" stop-color="#fb7185" stop-opacity="0.9"/></radialGradient>
+        <radialGradient id="pk3" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#fb7185"/><stop offset="100%" stop-color="#fecdd3" stop-opacity="0.85"/></radialGradient>
+        <radialGradient id="pk4" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#fecdd3"/><stop offset="100%" stop-color="#fff1f2" stop-opacity="0.85"/></radialGradient>
+
+        <linearGradient id="lf1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b" stop-opacity="0.95"/></linearGradient>
+        <linearGradient id="lf2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#064e3b"/><stop offset="100%" stop-color="#0f766e" stop-opacity="0.95"/></linearGradient>
+        <linearGradient id="lf3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9"/></linearGradient>
+
+        <path id="p1" d="M0,0 C-50,-20 -70,-80 -10,-100 C50,-80 30,-20 0,0 Z" />
+        <path id="p2" d="M0,0 C-60,-30 -80,-90 -20,-110 C40,-90 70,-40 0,0 Z" />
+        <path id="p3" d="M0,0 C-35,-15 -45,-45 0,-65 C45,-45 35,-15 0,0 Z" />
+        <path id="leaf" d="M0,0 C-30,-40 -40,-100 0,-140 C40,-100 30,-40 0,0 Z" />
+        <path id="branch" d="M0,0 Q20,-30 40,-80" fill="none" stroke="#78716c" stroke-width="2.5" stroke-linecap="round"/>
+        
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+            <g><g transform="translate(200, 110) rotate(-135)"><use href="#branch" class="bloom" style="animation-delay: 0.1s;" /></g><g transform="translate(200, 110) scale(1.2) rotate(-45)"><use href="#leaf" class="bloom" style="animation-delay: 0.3s;" fill="url(#lf1)"/></g><g transform="translate(200, 110) scale(1.1) rotate(-90)"><use href="#leaf" class="bloom" style="animation-delay: 0.5s;" fill="url(#lf2)"/></g><g transform="translate(200, 110) scale(1.1) rotate(0)"><use href="#leaf" class="bloom" style="animation-delay: 0.7s;" fill="url(#lf2)"/></g><g transform="translate(200, 110) scale(0.9) rotate(-120)"><use href="#leaf" class="bloom" style="animation-delay: 0.9s;" fill="url(#lf3)"/></g><g transform="translate(200, 110) scale(0.9) rotate(30)"><use href="#leaf" class="bloom" style="animation-delay: 1.1s;" fill="url(#lf3)"/></g><circle cx="100" cy="40" r="4" fill="#fecdd3" class="bloom" style="animation-delay: 1.5s; transform-origin: 100px 40px;" /><circle cx="115" cy="50" r="3" fill="#fbcfe8" class="bloom" style="animation-delay: 1.6s; transform-origin: 115px 50px;" /><circle cx="120" cy="210" r="5" fill="#fecdd3" class="bloom" style="animation-delay: 1.7s; transform-origin: 120px 210px;" /><g transform="translate(110, 200) scale(0.85) rotate(-30)"><g class="bloom" style="animation-delay: 1.4s;"><use href="#p2" transform="rotate(1.3942679845788373)" fill="url(#mv1)"/><use href="#p2" transform="rotate(67.25010755222667)" fill="url(#mv1)"/><use href="#p2" transform="rotate(141.75029318369118)" fill="url(#mv1)"/><use href="#p2" transform="rotate(213.23210738148822)" fill="url(#mv1)"/><use href="#p2" transform="rotate(290.3647121416401)" fill="url(#mv1)"/><use href="#p1" transform="scale(0.85) rotate(37.76699487422911)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(111.92179567704845)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(175.86938832629417)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(251.2192181968527)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(319.2979721943807)" fill="url(#mv2)"/><use href="#p2" transform="scale(0.7) rotate(12.186379748036034)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(75.05355288103362)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(130.26535969683863)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(191.98837650686647)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(256.49884437779525)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(315.44941480603217)" fill="url(#mv3)"/><use href="#p1" transform="scale(0.55) rotate(51.204406220406966)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(126.89265683875908)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(201.09430456677828)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(265.0649875967806)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(345.0581925183281)" fill="url(#mv4)"/><use href="#p3" transform="scale(0.35) rotate(21.981393949882268)" fill="url(#mv5)"/><use href="#p3" transform="scale(0.35) rotate(108.40250516517992)" fill="url(#mv5)"/><use href="#p3" transform="scale(0.35) rotate(196.5547949981178)" fill="url(#mv5)"/><use href="#p3" transform="scale(0.35) rotate(294.5721307220678)" fill="url(#mv5)"/></g></g><g transform="translate(260, 40) scale(0.7) rotate(20)"><g class="bloom" style="animation-delay: 1.8s;"><use href="#p2" transform="rotate(-1.6340545488737321)" fill="url(#pk1)"/><use href="#p2" transform="rotate(67.92745843380148)" fill="url(#pk1)"/><use href="#p2" transform="rotate(139.96716376833464)" fill="url(#pk1)"/><use href="#p2" transform="rotate(219.4749436634746)" fill="url(#pk1)"/><use href="#p2" transform="rotate(289.0372603136689)" fill="url(#pk1)"/><use href="#p1" transform="scale(0.85) rotate(39.0712827327438)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(110.29731786693817)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(180.362280914547)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(256.7311576397937)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(322.78534377208354)" fill="url(#pk2)"/><use href="#p2" transform="scale(0.7) rotate(15.52040631273227)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(78.29404664252995)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(136.18519752364247)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(198.61706900310776)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(255.77352145256762)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(317.0457183621492)" fill="url(#pk3)"/><use href="#p1" transform="scale(0.55) rotate(49.45824383655662)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(123.27898275651548)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(195.89387963602107)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(265.7979197692363)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(339.3279088636103)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(16.010014294097292)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(107.77973603110092)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(201.356844442644)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(288.64832178970084)" fill="url(#pk4)"/></g></g><g transform="translate(200, 110) scale(1.2) rotate(45)"><g class="bloom" style="animation-delay: 2.2s;"><use href="#p2" transform="rotate(-1.2981903288311738)" fill="url(#bl1)"/><use href="#p2" transform="rotate(69.09507030771488)" fill="url(#bl1)"/><use href="#p2" transform="rotate(141.66977822049114)" fill="url(#bl1)"/><use href="#p2" transform="rotate(220.36654587712493)" fill="url(#bl1)"/><use href="#p2" transform="rotate(289.48035385246595)" fill="url(#bl1)"/><use href="#p1" transform="scale(0.85) rotate(37.09131005666988)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(104.71138648198097)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(182.2912679795035)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(248.63402493761927)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(322.7945544175765)" fill="url(#bl2)"/><use href="#p2" transform="scale(0.7) rotate(19.895233506365955)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(76.39999759854093)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(135.56949743774646)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(196.84614250989875)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(258.4285192018981)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(317.75999911546245)" fill="url(#bl3)"/><use href="#p1" transform="scale(0.55) rotate(51.290480719641046)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(121.32100243904037)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(196.1545304805908)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(267.67740875975704)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(339.1098284358633)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(24.429097143350546)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(113.76367626472668)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(198.1467788079848)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(291.5543866529488)" fill="url(#bl4)"/></g></g></g>
+        </svg>
+
+        <svg class="floral bottom-left" viewBox="0 0 360 360" fill="none" xmlns="http://www.w3.org/2000/svg">
+            
+    <defs>
+        <radialGradient id="bl1" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#020617"/><stop offset="100%" stop-color="#0f172a" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="bl2" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e3a8a" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="bl3" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9"/></radialGradient>
+        <radialGradient id="bl4" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#3b82f6"/><stop offset="100%" stop-color="#93c5fd" stop-opacity="0.85"/></radialGradient>
+        
+        <radialGradient id="mv1" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#2e052c"/><stop offset="100%" stop-color="#4a044e" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="mv2" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#4a044e"/><stop offset="100%" stop-color="#701a75" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="mv3" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#701a75"/><stop offset="100%" stop-color="#9d174d" stop-opacity="0.9"/></radialGradient>
+        <radialGradient id="mv4" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#9d174d"/><stop offset="100%" stop-color="#db2777" stop-opacity="0.85"/></radialGradient>
+        <radialGradient id="mv5" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#db2777"/><stop offset="100%" stop-color="#fbcfe8" stop-opacity="0.85"/></radialGradient>
+
+        <radialGradient id="pk1" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#831843"/><stop offset="100%" stop-color="#be185d" stop-opacity="0.95"/></radialGradient>
+        <radialGradient id="pk2" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#be185d"/><stop offset="100%" stop-color="#fb7185" stop-opacity="0.9"/></radialGradient>
+        <radialGradient id="pk3" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#fb7185"/><stop offset="100%" stop-color="#fecdd3" stop-opacity="0.85"/></radialGradient>
+        <radialGradient id="pk4" cx="50%" cy="80%" r="80%"><stop offset="0%" stop-color="#fecdd3"/><stop offset="100%" stop-color="#fff1f2" stop-opacity="0.85"/></radialGradient>
+
+        <linearGradient id="lf1" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#0f172a"/><stop offset="100%" stop-color="#1e293b" stop-opacity="0.95"/></linearGradient>
+        <linearGradient id="lf2" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#064e3b"/><stop offset="100%" stop-color="#0f766e" stop-opacity="0.95"/></linearGradient>
+        <linearGradient id="lf3" x1="0" y1="0" x2="0" y2="1"><stop offset="0%" stop-color="#1e3a8a"/><stop offset="100%" stop-color="#3b82f6" stop-opacity="0.9"/></linearGradient>
+
+        <path id="p1" d="M0,0 C-50,-20 -70,-80 -10,-100 C50,-80 30,-20 0,0 Z" />
+        <path id="p2" d="M0,0 C-60,-30 -80,-90 -20,-110 C40,-90 70,-40 0,0 Z" />
+        <path id="p3" d="M0,0 C-35,-15 -45,-45 0,-65 C45,-45 35,-15 0,0 Z" />
+        <path id="leaf" d="M0,0 C-30,-40 -40,-100 0,-140 C40,-100 30,-40 0,0 Z" />
+        <path id="branch" d="M0,0 Q20,-30 40,-80" fill="none" stroke="#78716c" stroke-width="2.5" stroke-linecap="round"/>
+        
+        <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+            <feGaussianBlur stdDeviation="2" result="blur" />
+            <feComposite in="SourceGraphic" in2="blur" operator="over" />
+        </filter>
+    </defs>
+
+            <g><g transform="translate(200, 110) rotate(-135)"><use href="#branch" class="bloom" style="animation-delay: 0.1s;" /></g><g transform="translate(200, 110) scale(1.2) rotate(-45)"><use href="#leaf" class="bloom" style="animation-delay: 0.3s;" fill="url(#lf1)"/></g><g transform="translate(200, 110) scale(1.1) rotate(-90)"><use href="#leaf" class="bloom" style="animation-delay: 0.5s;" fill="url(#lf2)"/></g><g transform="translate(200, 110) scale(1.1) rotate(0)"><use href="#leaf" class="bloom" style="animation-delay: 0.7s;" fill="url(#lf2)"/></g><g transform="translate(200, 110) scale(0.9) rotate(-120)"><use href="#leaf" class="bloom" style="animation-delay: 0.9s;" fill="url(#lf3)"/></g><g transform="translate(200, 110) scale(0.9) rotate(30)"><use href="#leaf" class="bloom" style="animation-delay: 1.1s;" fill="url(#lf3)"/></g><circle cx="100" cy="40" r="4" fill="#fecdd3" class="bloom" style="animation-delay: 1.5s; transform-origin: 100px 40px;" /><circle cx="115" cy="50" r="3" fill="#fbcfe8" class="bloom" style="animation-delay: 1.6s; transform-origin: 115px 50px;" /><circle cx="120" cy="210" r="5" fill="#fecdd3" class="bloom" style="animation-delay: 1.7s; transform-origin: 120px 210px;" /><g transform="translate(110, 200) scale(0.85) rotate(-30)"><g class="bloom" style="animation-delay: 1.4s;"><use href="#p2" transform="rotate(1.3942679845788373)" fill="url(#mv1)"/><use href="#p2" transform="rotate(67.25010755222667)" fill="url(#mv1)"/><use href="#p2" transform="rotate(141.75029318369118)" fill="url(#mv1)"/><use href="#p2" transform="rotate(213.23210738148822)" fill="url(#mv1)"/><use href="#p2" transform="rotate(290.3647121416401)" fill="url(#mv1)"/><use href="#p1" transform="scale(0.85) rotate(37.76699487422911)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(111.92179567704845)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(175.86938832629417)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(251.2192181968527)" fill="url(#mv2)"/><use href="#p1" transform="scale(0.85) rotate(319.2979721943807)" fill="url(#mv2)"/><use href="#p2" transform="scale(0.7) rotate(12.186379748036034)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(75.05355288103362)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(130.26535969683863)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(191.98837650686647)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(256.49884437779525)" fill="url(#mv3)"/><use href="#p2" transform="scale(0.7) rotate(315.44941480603217)" fill="url(#mv3)"/><use href="#p1" transform="scale(0.55) rotate(51.204406220406966)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(126.89265683875908)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(201.09430456677828)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(265.0649875967806)" fill="url(#mv4)"/><use href="#p1" transform="scale(0.55) rotate(345.0581925183281)" fill="url(#mv4)"/><use href="#p3" transform="scale(0.35) rotate(21.981393949882268)" fill="url(#mv5)"/><use href="#p3" transform="scale(0.35) rotate(108.40250516517992)" fill="url(#mv5)"/><use href="#p3" transform="scale(0.35) rotate(196.5547949981178)" fill="url(#mv5)"/><use href="#p3" transform="scale(0.35) rotate(294.5721307220678)" fill="url(#mv5)"/></g></g><g transform="translate(260, 40) scale(0.7) rotate(20)"><g class="bloom" style="animation-delay: 1.8s;"><use href="#p2" transform="rotate(-1.6340545488737321)" fill="url(#pk1)"/><use href="#p2" transform="rotate(67.92745843380148)" fill="url(#pk1)"/><use href="#p2" transform="rotate(139.96716376833464)" fill="url(#pk1)"/><use href="#p2" transform="rotate(219.4749436634746)" fill="url(#pk1)"/><use href="#p2" transform="rotate(289.0372603136689)" fill="url(#pk1)"/><use href="#p1" transform="scale(0.85) rotate(39.0712827327438)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(110.29731786693817)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(180.362280914547)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(256.7311576397937)" fill="url(#pk2)"/><use href="#p1" transform="scale(0.85) rotate(322.78534377208354)" fill="url(#pk2)"/><use href="#p2" transform="scale(0.7) rotate(15.52040631273227)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(78.29404664252995)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(136.18519752364247)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(198.61706900310776)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(255.77352145256762)" fill="url(#pk3)"/><use href="#p2" transform="scale(0.7) rotate(317.0457183621492)" fill="url(#pk3)"/><use href="#p1" transform="scale(0.55) rotate(49.45824383655662)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(123.27898275651548)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(195.89387963602107)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(265.7979197692363)" fill="url(#pk4)"/><use href="#p1" transform="scale(0.55) rotate(339.3279088636103)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(16.010014294097292)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(107.77973603110092)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(201.356844442644)" fill="url(#pk4)"/><use href="#p3" transform="scale(0.35) rotate(288.64832178970084)" fill="url(#pk4)"/></g></g><g transform="translate(200, 110) scale(1.2) rotate(45)"><g class="bloom" style="animation-delay: 2.2s;"><use href="#p2" transform="rotate(-1.2981903288311738)" fill="url(#bl1)"/><use href="#p2" transform="rotate(69.09507030771488)" fill="url(#bl1)"/><use href="#p2" transform="rotate(141.66977822049114)" fill="url(#bl1)"/><use href="#p2" transform="rotate(220.36654587712493)" fill="url(#bl1)"/><use href="#p2" transform="rotate(289.48035385246595)" fill="url(#bl1)"/><use href="#p1" transform="scale(0.85) rotate(37.09131005666988)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(104.71138648198097)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(182.2912679795035)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(248.63402493761927)" fill="url(#bl2)"/><use href="#p1" transform="scale(0.85) rotate(322.7945544175765)" fill="url(#bl2)"/><use href="#p2" transform="scale(0.7) rotate(19.895233506365955)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(76.39999759854093)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(135.56949743774646)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(196.84614250989875)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(258.4285192018981)" fill="url(#bl3)"/><use href="#p2" transform="scale(0.7) rotate(317.75999911546245)" fill="url(#bl3)"/><use href="#p1" transform="scale(0.55) rotate(51.290480719641046)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(121.32100243904037)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(196.1545304805908)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(267.67740875975704)" fill="url(#bl4)"/><use href="#p1" transform="scale(0.55) rotate(339.1098284358633)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(24.429097143350546)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(113.76367626472668)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(198.1467788079848)" fill="url(#bl4)"/><use href="#p3" transform="scale(0.35) rotate(291.5543866529488)" fill="url(#bl4)"/></g></g></g>
+        </svg>
+
+        <!-- EASTER EGG 2: Borboleta Azul de Life is Strange -->
+        <div class="butterfly-container">
+            <svg viewBox="0 0 64 64" xmlns="http://www.w3.org/2000/svg">
+                <g filter="url(#glow)">
+                    <path d="M30,32 C20,15 5,10 12,28 C5,35 15,50 28,34 Z" fill="#60A5FA"/>
+                    <path d="M34,32 C44,15 59,10 52,28 C59,35 49,50 36,34 Z" fill="#3B82F6"/>
+                    <path d="M28,32 C22,20 12,18 16,26 C12,30 20,40 26,33 Z" fill="#93C5FD"/>
+                    <path d="M36,32 C42,20 52,18 48,26 C52,30 44,40 38,33 Z" fill="#93C5FD"/>
+                    <ellipse cx="32" cy="32" rx="1.5" ry="8" fill="#1E3A8A"/>
+                </g>
+            </svg>
+        </div>
+
+        <div class="content">
+            <div class="cursive-highlight">Com muito amor e alegria</div>
+            <div class="header-text">Te convidamos para o nosso casamento</div>
+            
+            <div class="names">Marcos <br>&<br> Jaine</div>
+            
+            <!-- DIVISOR 1 (Apenas o Coração) -->
+            <div class="divider-wrapper">
+                <div class="divider-line"></div>
+                <div class="divider-icon">
+                    <svg class="heart-icon" width="24" height="24" viewBox="0 0 24 24" fill="#ef4444" stroke="#ef4444" stroke-width="1" stroke-linecap="round" stroke-linejoin="round">
+                        <path d="M20.84 4.61a5.5 5.5 0 0 0-7.78 0L12 5.67l-1.06-1.06a5.5 5.5 0 0 0-7.78 7.78l1.06 1.06L12 21.23l7.78-7.78 1.06-1.06a5.5 5.5 0 0 0 0-7.78z"></path>
+                    </svg>
+                </div>
+                <div class="divider-line"></div>
+            </div>
+            
+            <div class="date-time">
+                Sexta-feira, 04 de Dezembro de 2026 às 15h30
+            </div>
+            
+            <div class="section-title">Cerimônia Civil</div>
+            <div class="details">
+                Cartório Civil de Osasco<br>
+                <a href="https://maps.app.goo.gl/99y2RRS1yVCZ5REj7?g_st=ac" target="_blank" class="map-link">
+                    Av. João Batista, 259 - Centro<br>
+                    Osasco - SP
+                </a>
+            </div>
+            
+            <div class="section-title">Jantar em Família</div>
+            <div class="details" style="margin-bottom: 0;">
+                Canto da Mata - 18h<br>
+                <a href="https://maps.app.goo.gl/GUMF9cFnAPfWNA2w8?g_st=ac" target="_blank" class="map-link">
+                    Av. Dr. Martin Luther King, 1861<br>
+                    Osasco - SP
+                </a>
+            </div>
+
+            <!-- DIVISOR 2 (Ícone de Alianças) -->
+            <div class="divider-wrapper" style="margin-top: 40px; margin-bottom: 30px;">
+                <div class="divider-line"></div>
+                <div class="divider-icon">
+                    <svg class="rings-icon" viewBox="0 0 24 24" width="28" height="28" fill="none" stroke="#c4a977" stroke-width="1.2" stroke-linecap="round" stroke-linejoin="round">
+                        <circle cx="9" cy="12" r="5.5"></circle>
+                        <circle cx="15" cy="12" r="5.5"></circle>
+                    </svg>
+                </div>
+                <div class="divider-line"></div>
+            </div>
+
+            <!-- RODAPÉ -->
+            <div class="footer-text">
+                Contamos com a sua presença nesse dia tão especial!
+            </div>
+        </div>
+    </div>
+
+</body>
+</html>
